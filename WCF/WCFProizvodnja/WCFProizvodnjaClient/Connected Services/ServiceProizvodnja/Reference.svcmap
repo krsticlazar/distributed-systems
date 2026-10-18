@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="04a773b7-dfe1-41aa-b264-75a1d8fd3c82" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:55103/ProizvodnjaService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProizvodnjaService.wsdl" MetadataType="Wsdl" ID="9ee9abf1-0d77-437d-ba6b-c4ee5fd80783" SourceId="1" SourceUrl="http://localhost:55103/ProizvodnjaService.svc?wsdl" />
+    <MetadataFile FileName="ProizvodnjaService.xsd" MetadataType="Schema" ID="b7691487-1029-418d-bab9-914a7de08cf6" SourceId="1" SourceUrl="http://localhost:55103/ProizvodnjaService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProizvodnjaService1.xsd" MetadataType="Schema" ID="1e90e11a-8a70-419d-87f4-e74eadc58425" SourceId="1" SourceUrl="http://localhost:55103/ProizvodnjaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProizvodnjaService2.xsd" MetadataType="Schema" ID="f0eb8904-69f4-4ce1-b593-fe2146dede8e" SourceId="1" SourceUrl="http://localhost:55103/ProizvodnjaService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ProizvodnjaService.disco" MetadataType="Disco" ID="91e96381-b30d-4b15-9acb-813dc3e4939e" SourceId="1" SourceUrl="http://localhost:55103/ProizvodnjaService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

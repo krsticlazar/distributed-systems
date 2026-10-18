@@ -1,0 +1,8 @@
+	
+	U .NET-u koristeci gRPC, napisati servis koji prihvata tok podataka, gde se svaki podatak sastoji od dva prirodna broja a i b.
+	
+		Za svaku primljenu poruku, procedura ispituje da li je broj b kvadrat a.
+		Ako jeste vraca poruku "Da", a ako nije vraca poruku "Ne". 
+
+	Napisati i proto fajl okt2.proto koji daje specifikaciju servisa i poruka koje se koriste u komunikaciji.
+

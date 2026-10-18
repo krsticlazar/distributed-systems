@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../Materijal/WCFIspitnaPrijava_uputstvo.md" />
+  </Folder>
+  <Project Path="WCFIspitnaPrijavaClient/WCFIspitnaPrijavaClient.csproj" />
+  <Project Path="WCFIspitnaPrijavaServer/WCFIspitnaPrijavaServer.csproj" />
+</Solution>

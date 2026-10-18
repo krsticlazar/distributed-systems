@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="VremeServis" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:61505/VremeServis.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:61505/VremeServis.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:61505/VremeServis.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfVremeServer" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IVremeServis_TrenutnoVreme_InputMessage">
+    <wsdl:part name="parameters" element="tns:TrenutnoVreme" />
+  </wsdl:message>
+  <wsdl:message name="IVremeServis_TrenutnoVreme_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TrenutnoVremeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVremeServis_VremePokretanja_InputMessage">
+    <wsdl:part name="parameters" element="tns:VremePokretanja" />
+  </wsdl:message>
+  <wsdl:message name="IVremeServis_VremePokretanja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VremePokretanjaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVremeServis_Saberi_InputMessage">
+    <wsdl:part name="parameters" element="tns:Saberi" />
+  </wsdl:message>
+  <wsdl:message name="IVremeServis_Saberi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaberiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVremeServis_Saberi_GreskaSabiranjaFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WcfVremeServer" name="detail" element="q1:GreskaSabiranja" />
+  </wsdl:message>
+  <wsdl:message name="IVremeServis_Opis_InputMessage">
+    <wsdl:part name="parameters" element="tns:Opis" />
+  </wsdl:message>
+  <wsdl:message name="IVremeServis_Opis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OpisResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVremeServis">
+    <wsdl:operation name="TrenutnoVreme">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVremeServis/TrenutnoVreme" message="tns:IVremeServis_TrenutnoVreme_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVremeServis/TrenutnoVremeResponse" message="tns:IVremeServis_TrenutnoVreme_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VremePokretanja">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVremeServis/VremePokretanja" message="tns:IVremeServis_VremePokretanja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVremeServis/VremePokretanjaResponse" message="tns:IVremeServis_VremePokretanja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Saberi">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVremeServis/Saberi" message="tns:IVremeServis_Saberi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVremeServis/SaberiResponse" message="tns:IVremeServis_Saberi_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IVremeServis/SaberiGreskaSabiranjaFault" name="GreskaSabiranjaFault" message="tns:IVremeServis_Saberi_GreskaSabiranjaFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Opis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVremeServis/Opis" message="tns:IVremeServis_Opis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVremeServis/OpisResponse" message="tns:IVremeServis_Opis_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IVremeServis" type="tns:IVremeServis">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TrenutnoVreme">
+      <soap:operation soapAction="http://tempuri.org/IVremeServis/TrenutnoVreme" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VremePokretanja">
+      <soap:operation soapAction="http://tempuri.org/IVremeServis/VremePokretanja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Saberi">
+      <soap:operation soapAction="http://tempuri.org/IVremeServis/Saberi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="GreskaSabiranjaFault">
+        <soap:fault use="literal" name="GreskaSabiranjaFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Opis">
+      <soap:operation soapAction="http://tempuri.org/IVremeServis/Opis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VremeServis">
+    <wsdl:port name="BasicHttpBinding_IVremeServis" binding="tns:BasicHttpBinding_IVremeServis">
+      <soap:address location="http://localhost:61505/VremeServis.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

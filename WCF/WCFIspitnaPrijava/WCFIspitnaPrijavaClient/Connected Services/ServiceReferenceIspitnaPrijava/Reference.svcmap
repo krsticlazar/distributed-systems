@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="c9e1ab1f-e300-47b1-8aa9-0f7358d32b07" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52250/IspitnaPrijavaService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="IspitnaPrijavaService.wsdl" MetadataType="Wsdl" ID="005191c6-f3ad-45cb-b5a1-9d5997439edf" SourceId="1" SourceUrl="http://localhost:52250/IspitnaPrijavaService.svc?wsdl" />
+    <MetadataFile FileName="IspitnaPrijavaService.xsd" MetadataType="Schema" ID="a2a0b8af-7db2-4d84-b4aa-ac60bd9b1717" SourceId="1" SourceUrl="http://localhost:52250/IspitnaPrijavaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="IspitnaPrijavaService1.xsd" MetadataType="Schema" ID="f2a7dcf7-f2c9-4a72-9a31-aba37b689913" SourceId="1" SourceUrl="http://localhost:52250/IspitnaPrijavaService.svc?xsd=xsd2" />
+    <MetadataFile FileName="IspitnaPrijavaService.disco" MetadataType="Disco" ID="8ad0945e-c2f1-4e7c-8c0c-17ed32d28a4e" SourceId="1" SourceUrl="http://localhost:52250/IspitnaPrijavaService.svc?disco" />
+    <MetadataFile FileName="IspitnaPrijavaService2.xsd" MetadataType="Schema" ID="e9918247-74cf-438f-9b00-da0a8deec645" SourceId="1" SourceUrl="http://localhost:52250/IspitnaPrijavaService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

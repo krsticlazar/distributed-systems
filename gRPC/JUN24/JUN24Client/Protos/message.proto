@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "JUN24Client";
+package jun24;
+
+service MessageManager {
+  rpc SendMessage(MessageRequest) returns (MessageItem);
+  rpc DeleteMessage(MessageId) returns (google.protobuf.Empty);
+  rpc ListMessages(google.protobuf.Empty) returns (stream MessageItem);
+}
+
+message MessageRequest {
+  string text = 1;
+}
+
+message MessageId {
+  int32 id = 1;
+}
+
+message MessageItem {
+  int32 id = 1;
+  string text = 2;
+}
+

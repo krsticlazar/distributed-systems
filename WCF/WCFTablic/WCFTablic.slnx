@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WCFTablicClient/WCFTablicClient.csproj" Id="40000000-0000-0000-0000-000000000402" />
+  <Project Path="WCFTablicServer/WCFTablicServer.csproj" Id="40000000-0000-0000-0000-000000000401" />
+</Solution>

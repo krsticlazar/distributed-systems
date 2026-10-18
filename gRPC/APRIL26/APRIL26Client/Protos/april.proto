@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "APRIL26Client";
+package april26;
+
+service Calculator {
+	rpc Sabiranje(OperacijaRequest) returns (RezultatResponse);
+	rpc Oduzimanje(OperacijaRequest) returns (RezultatResponse);
+	rpc Mnozenje(OperacijaRequest) returns(RezultatResponse);
+	rpc Deljenje(OperacijaRequest) returns(RezultatResponse);
+}
+
+message OperacijaRequest {
+	int32 operand1=1;
+	int32 operand2=2;
+}
+
+message RezultatResponse{
+	int32 operand1=1;
+	int32 operand2=2;
+	string operacija=3;
+	int32 rezultat=4;
+}

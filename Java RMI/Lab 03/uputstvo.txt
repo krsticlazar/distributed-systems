@@ -1,0 +1,11 @@
+Iz foldera "Lab 03":
+
+javac *.java
+java Server
+
+U drugom terminalu:
+
+java Klijent
+
+Test JBK:
+JBK123456

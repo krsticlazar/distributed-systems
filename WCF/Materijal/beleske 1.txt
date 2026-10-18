@@ -1,0 +1,143 @@
+wcf se iskljucivo radi u .net framewroku ali .net core ne radi, obratiti paznju pri kreiranju projekta
+
+glavna serijalizacija se radi preko xml-a. 
+
+gRPC je kasnije nastao jer su nam nametnuti security protokoli koji ne da nisu neophodni ali u wcfu to nema.
+
+kod xml-a, ako ja promenim server neko ce morati da promeni klijent, kod json-a ne mora, nece da radi ali nece ni da pukne. razlog zbog kojeg se forsira json u odnosu na xml. objekat koji serijalizujemo u jsonu je kraci, tu se gubi citljivvost, xml je laksi jer ima sve. 
+
+WCF - servis mora da bude u windowsu, to je ogranicenje, i mora da je pisan u C#, klijent moze gde god, mi cemo klijent isto u c#, ne mora dizajn ili sta god, za lab je preporucljivo formu a za ispit je najbolje konzolna aplikacija (otvorimo proxy i to je to)
+
+wcf service
+dobijem sablon
+
+u web configu za ispit pisemo:
+jedan deo za endpoint
+
+dobijamo svc fajl i service cs su nekad bili zajedno, ako menjamo ime service-u menjamo posle rucno i svc. 
+
+public interfejs nazivamo kako zelimo, 
+
+DateTime TrenutnoVreme();
+
+implementiramo u service (a i ne mora)
+
+ako nije ukrasen sa operationcontract, nece se videti
+
+
+zatim je profesor kreira win form projekat unutar ovog naseg i u reference dodao namespace od serverskog projekta.
+napravio je button i prozor za upis
+
+u button zove ServicePrimer1Client proxy = new ServicePrimer1Client();
+//ovo je najbitnije, nesto sto gpt pise otvaramo duplex kanale i ostalo, nije ispravan nacin (ne da nije tacan ali nije ispravan). to znaci da nismo uradili service reference nego smo reference uvezli direkt iz servise sto je greska, mora ovako, ovako je najpravilinije i tako cesd ti da mi radis do sad. to nesto nece ici, nece biti serijalizovano. referenca ne ide na service nego na service reference-a. 
+
+3
+unutar button je pozvao AppendText, funkciju koju je kasnije implementirao
+
+AppendText(box, text, color)
+koristi se invoke required, ako vrati to, nismo u grafickoj niti. invoke ce da nas prebaci u graficku nit bez cross red problema. 
+
+
+
+da bi se na klijentu videla serverska greska
+[FaultContract(typeof(Greska))]
+Greska je klasa koju cemo da napravimo unutar IService
+
+pravimo
+[Data Contract]
+public class greska{
+	[DataMember]
+	
+}
+
+
+
+i zatim na klijentu deo koji moze da pukne mora da stoji u try catch bloku u da vraca exception Greska
+[nesto imam uradjeno u zadatku a nesto nemam, to uporedi].
+takodje, kada dodamo service reference i dodamo nesto kasnije to nece da se vidi u klijentu, desni klik update service reference, nista vise
+
+
+ne radi jedan deo jer se ne markiraju funkcije, na klijentu se vidi samo ono sto je markirano da se vidi
+
+defaultni rad servise je po pozivu, kad kliknemo na formu kad je napravljen servis samo odstampa datetime now, to nije dobro, nas interesuje kad smo ga digli i da upamtimo to vreme negde 
+
+3 opcije
+singleton, pozove se prvi put, kreira se prvi put i zivi dokle hostujemo server, kada ubijemo hosta on ce da se restartuje
+procesion ili tako nesto, kreira se i zivi dokle zivi sesija
+prohop - ili tako nesto
+u zavisnosti od texta zadatka koristimo neki od ova 3
+
+ako treba da pamti stanje ili sesion il singleton
+da li pamtim stanje za jednog ili za vise, da li je stanje zajednicko - sesija je za svakog ponaosob, ako je za jednog onda singleton
+
+u web config moramo da dodamo endpoint controct i binding moramo da dodamo basicHttpBinding (ako je jednostavnije)
+ako imam za sesiju onda ide swHttpBinding
+
+
+sada kad se klikne na Kad, nije kad je servis startovan nego kad je prvi put pozvana funkcija
+
+jedan nacin - nisam cuo
+drugi nacin, pravim zasebnu klassu koja ce da glumi repozitory (singleton) i u njoj ce da zivi ta informacija (objekat, text, sta god)
+
+
+pravimo klasu Repositort, Instance i get nek bude kreiranje instance, posto je konstuktor private moze 
+
+moze i object _lock = true
+preporucuje se da se koristi i Monitor.Enter(_lock) to osigurava da niko drugi nece da napravimo instancu ove klase
+
+na ispitu, using ne pisemo, try catch ne moramo da pisemo osim ako ne smatramo da je deo zadatka, ovde smo koristili catch fault exception ali za vecinu zadatka ne treba.
+
+konzolna aplikacija je isto uredu, moze da se koristi, console write line 
+
+ono sto trebamo da 
+
+kako se pravi interfejst, servicecontract, metode koje zelimo da se vide da su operation contract, data contract za tipove koje zelimo da prosledjujemo koji su kompozitnog tipa, bolje da napravimo tip nego da saljemo 50 argumenata.
+
+vodimo racuna o property-u, da su defaultni da imamo polje privatno i onda nesto sto pristupa njemu, vidljivi su oni koji su obelezeni
+
+drugi deo je implemntacija
+
+
+na ispitu: nesto cu da predam servisu, on to treba nesto da obradi i sacuva i vrati i to je to
+
+callback sledeci cas - ako se operacija izvrsava duze nego sto mozemo da cekamo, javi mi kad micko dodje na posao, ja mogu da stavim timeout od 10 dana ali to nije poenta, da ne bi non stop pitao servis kad je dosao, micko se ulogovao, javi mi poruka.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

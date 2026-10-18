@@ -1,0 +1,12 @@
+DODATNI 03 - SISTEM REDOVA CEKANJA
+
+Koriscenjem Java RMI tehnologije napraviti sistem za upravljanje redom cekanja.
+Klijent poziva takeTicket, prosledjuje ime i callback, a server vraca
+serijalizovani Ticket sa brojem i imenom klijenta.
+
+Servis omogucava prikaz reda i pozivanje sledeceg klijenta. Kada administrator
+pozove callNext, server uklanja prvi tiket i preko callback metode
+ticketCalled(int number) obavestava odgovarajuceg klijenta.
+
+Server registruje servis na portu 3099. Korisnicki klijent uzima tiket i prima
+obavestenje, a administratorski klijent poziva sledeci tiket.

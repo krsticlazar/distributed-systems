@@ -1,0 +1,20 @@
+Iz foldera "Ispit KOL124":
+
+javac *.java
+
+Terminal 1 - server:
+
+java Server
+
+Terminal 2 - korisnik koji prati rezultat:
+
+java ClientUser
+
+Terminal 3 - administrator koji dodaje gol:
+
+java ClientAdmin
+
+Ako server nije na istom racunaru:
+
+java ClientUser IP_ADRESA_SERVERA
+java ClientAdmin IP_ADRESA_SERVERA

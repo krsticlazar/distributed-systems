@@ -1,0 +1,224 @@
+TERMIN 1:
+
+predznanje
+
+znanje koje je neophodno su izvedeni tipovi, rad sa fajlovima (cele 4 funkcija) 
+
+prednost starog pristupa je jednostavnost programiranja i preglednost ali mana je ta sto je latencija duzina najveceg iako imamo 99 procesa od 1 sekunde i jedan koji je 100 sekundi moramo da cekamo taj posledjni. 
+
+Moderan pristup je taj da svi procesi mogu da upisuju u svaki fajl, naravno, neophodno je da se sve to sinhronizuje jer OS mora da ima jedan pokazivac pa ako 2 upisuju u isti fajl moze da dodje do greske.
+Svaki proces ima svoj offset i ne zavisi od drugi procesa.
+
+Ovaj kurs dodje do spoja izmedju operativnih i paralelnih sistema jer sada koristimo distribuirane sisteme. 
+
+DS je svaki sistem koji ima vise procesa koji medjusobno komuniciraju, mi smo to radili u OS preko fork, pipe-ova itd...
+
+
+RAD SA FAJLOVIMA u C-u:
+
+File I/O u programskom jeziku C:
+Otvaranje/zatvaranje fajla
+FILE fp = fopen ("file_name", "mode");
+fclose (file_pointer);
+
+Tekstualni fajlovi
+Formatirani upis/čitanje
+fprintf(FILE *stream, const char *format, ...)
+fscanf(FILE *stream, const char *format, ...)
+
+Neformatirani upis/čitanje
+fgets(char *str, int n, FILE *stream)
+fputs(const char *str, FILE *stream)... Itd.
+
+Binarni fajlovi
+fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
+fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)
+fseek(FILE *stream, long int offset, int whence)
+
+
+Binarni fajlovi su bitni jer mi iako na faksu radimo u 99% slucajeva sa tekstualnim, racunaru je mnogo lakse i prirodnije i brze da radi sa binarnima tako da je to jedan deo optimizacije naseg servisa takodje.
+
+
+
+
+Osnovne MPI I/O funkcije liče na standardne funkcije
+jezika C:
+
+int MPI_File_open(MPI_Comm comm, const char *filename, int
+amode, MPI_Info info, MPI_File *fh)
+
+int MPI_File_seek(MPI_File fh, MPI_Offset offset, int whence)
+
+int MPI_File_read(MPI_File fh, void *buf, int count, MPI_Datatype
+datatype, MPI_Status *status)
+
+int MPI_File_write(MPI_File fh, const void *buf, int count,
+MPI_Datatype datatype, MPI_Status *status)
+
+int MPI_File_close(MPI_File *fh)
+
+
+Povratna vrednost svih funkcija je error code. To ne znaci da je uvek greska, moze da bude i succsesfull.
+MPI_Info cemo uvek stavljati NULL.
+
+imamo comm, to je komunikator
+
+
+offset je u bitovima, nije isto da stavimo 4 int ili 4 byte posto 1 int nije isto sto i 1 byte.
+
+Amode postoje MPI_MODE_  ->   RDONLY, RDWR, WRONLY, CREATE
+
+
+
+
+SEEK - pozicioniranje
+whence odakle se on gleda?
+MPI_SEEK_END    ->
+SET gleda od 0 byte pa do offseta koji smo naveli, CUR pokazuje na trenutnu poziciju pokazivaca + pomeraj (offset) 
+END od kraja fajla
+
+PRIMERI:
+
+MPI_File_seek(fh, 0, MPI_SEEK_SET); - Pozicioniranje na početak
+fajla
+
+MPI_File_seek(fh, rank * bufsize , MPI_SEEK_SET); - Pozicioniranje u
+zavisnosti od ranga procesa
+
+rank procesa ide od 0 do n-1. 
+buffsize ide u byteovima, ne u int, long itd
+
+
+
+
+Primer 1:
+N procesa i svaki cita n-ti deo zajednickog fajla
+
+Prvo ukljucujemo biblioteku mpi.h
+FILESIZE je bitno da se zna, za 1mb je 1024*1024 
+bufer cemo da napravimo niz integera a*i je bufsize zapravo(velicine int)
+
+rad:
+otvaramo fajl
+pozicioniranje (gde se gresi), stavlja se rank * nits, to je greska, on ocekuje koliko byteova imamo za pozicioniranje a read ocekuje koliko podataka odredjenog tipa imamo, za read ide 
+
+otvaramo fajl
+MPI_File_open(MPI_COMM_WORLD, "filename", MPI_MODE_RDONLY, MPI_INFO_NULL, &fh);
+
+
+MPI_File_seek(fh, rank * bufsize, MPI_SEEK_SET);
+
+
+MPI_File_read(fh, buf, nints, MPI_INT, &status);
+
+
+MPI_File_close(&fh);
+
+
+NA ISPITU CEMO DA IMAMO FUNKCIJE ZA UPISIVANJE SA EKSPLICITNIM POMERAJEM sa _at i FJE SA POJEDINACNIM POKAZIVACEM (sa IMPLICITNIM POMERAJEM) bez _at
+
+
+
+Primer
+offset je prvih 12 preskocenih, buffer za upis je count 2 a buf je velicina integera (4 byte * 2) 
+
+ovo resavamo sve kroz read_at, nemamo sada seek pa read
+
+
+NEKONTINUALNI PRISTUP
+
+imamo jedan fajl podeljen na 6 segmenta
+0 1 2 0 1 2
+proces 0 obradjuje 1. i 4. segment, pr1 obradjuje 2 i 5, pr2 obradjuje 3 i 5.
+ideja je odredjen proces vidi samo deo fajla koji ga interesuje, ne ove ostale. On moze sekb=vencijalno da upise jer on fajl vidi kao
+0 0 , ne vidi ovo izmedju ni poosle.
+
+NEKONTINUALNI PRISTUP zelimo da svedemo na KONTINUALNI pristup da bi mogli da skevencijalno obradimo neki deo.
+
+za to nam mpi nudi mogucnost pogleda na fajl, MPI_File_set_view.
+UPRAVO JE MPI FILE VIEW NAJVECI PROBLEM NA ISPITU, TO AKO SAVLADAMO LAKO RADIMO ISPIT
+
+0 1 2 0 1 2
+bukvalno pogled postavljamo tako sto biramo zbedeni tip kako ce proces da vidi fajl
+
+int MPI_File_set_view(MPI_File fh, MPI_Offset disp, MPI_Datatype
+etype, MPI_Datatype filetype, const char * datarep, MPI_Info info)
+
+zahteva hendler na fajl, fh
+\
+offset, od kog byte se gleda fajl, za pr0 ce da bude 0 jer gledamo od pocetka
+ 
+etype je osnovni tip, filetype je izvedeni tip koji je izveden iz integera (koji je osnovni tip)
+
+datarep 
+
+info NULL
+
+
+
+Primer 
+offset je 5
+etype je MPI INT
+filtype je 2 integera koje prati prazninia od 4 itngefera, 6 byteova  ukupno
+
+MPI_Type_contiguous(2, MPI_INT, &contig);   //imamo 2 integera
+
+MPI_Type_create_resized(contig, 0, 6 * sizeof(int), &filetype);			//offst krece od nule, velicina mu je 6 integera, to je nas novi tip
+
+MPI_Type_commit(&filetype);			
+
+MPI_File_set_view(fh, 5 * sizeof(int), etype, filetype, "native",
+MPI_INFO_NULL);
+
+
+Drugo resenje je preko MPI Type vectora
+MPI_Type_vector(1, 2, 6, MPI_INT, &filetype);
+MPI_Type_commit(&filetype);
+MPI_File_set_view(fh, 5 * sizeof(int), etype, filetype, "native",
+MPI_INFO_NULL);
+
+
+Primer 2
+zelimo da upisemo 100 integera 
+commitujemo
+
+
+sta je argument disp? -displacement, to je pomeraj kod pocetka fajla, odakle pocinje pogled, to nije isto za svaki fajl
+0. proces ce preskociti 0*N integera znaci da radi sa prvih 100, drugi ce preskociti 1*N tj privih 100 itd.
+
+
+Primer 3
+P0 vidi fajl kao prvi i peti blok fajla spojenih i to je to, i odjedanput ce da upise ceo fajl
+
+Neophodan je bafer koji ima velicinu
+otvaramo fajl
+sada fedinisemo pogled na fajl i to cemo sa type vectorom
+NW je jedna polovina, to je osnovni tip tj communicator, nw*proces je koliko ih ima
+
+set_view, to je jasno, to je pomeraj
+
+WRITE - u bafer koji je 8 integera upisujemo 2 ablk bloka
+
+za vector ne ide resize jer nemamo vise kontinualnih upisa
+
+
+
+
+
+TERMIN 2:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

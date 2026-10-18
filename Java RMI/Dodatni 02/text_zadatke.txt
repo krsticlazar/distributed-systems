@@ -1,0 +1,13 @@
+DODATNI 02 - DIGITALNA BIBLIOTEKA
+
+Koriscenjem Java RMI tehnologije napraviti sistem digitalne biblioteke.
+Book predstavlja knjigu sa atributima id, title, author i available.
+Korisnik nad udaljenom knjigom poziva metode borrow, returnBook i getInfo.
+Borrow vraca false ako je knjiga vec iznajmljena.
+
+Glavni remote objekat Library vraca udaljenu referencu na knjigu po id-ju i
+listu podataka o svim knjigama. BookInfo se prenosi po vrednosti.
+
+U konstruktoru kreirati dve knjige. Server registruje biblioteku na portu 2099.
+Klijent prikazuje knjige, preuzima knjigu sa id-jem 1, iznajmljuje je i prikazuje
+novo stanje.

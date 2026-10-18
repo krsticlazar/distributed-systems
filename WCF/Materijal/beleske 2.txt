@@ -1,0 +1,81 @@
+profesor je zeleo da doda jos jednu funkciju pre nego predjemo na callback. dodao je count++ jer zeli da pokaze koliko puta je servis startovan. to ja imam u svom primeru vec. 
+
+u service je dodao PerSession u Service behavior. testirao, nije mu radilo. mora u konfig da se binding promeni. basicHttpBinding ne omogucava sesiju, iako smo je ovamo promenili to ne radi
+
+<service> ... </service>     -> deo koji se trazi od nas na ispitu
+
+mora wsHttpBinding
+
+i dalje mu ne radi kako treba.
+
+binding ne mora za ispit da se pise ali je ceo protocol maping uzeo iz prethodnog zadatka da bi ceo wsHttpBinding bio konfigurisan.
+percall ce za svaki poziv mmetode da napravi novu instancu. PerSession suprotno
+
+u Interfejsu u ServiceContractu je dodao SessionMode.Required.
+instancecontextmode PerSession - ni to nije mu radilo jer je profesor nenormalan blago receno ali ti mi stavi samo da radi, nebitno kako, ispit se svakako radi u svesci
+Napravi mi novu aplikaciju, novi Solution gde je podeseno ovo, nek se zove WcfVremeSessionSolution i odradi mi da samo istestiram i vidim kod, isto kao moj WcfVremeSolution, bez razlike, ali zelim da imam 2 razlicita projekta da gledam. 
+
+
+
+CALLBACK
+otvorio je projekat Chat koji postoji u folderu Primeri
+[ServiceContract(CallbackContract = typeof(IChatCallback), SessionMode = SessionMode.Required)]
+ovo je bitno, session mode required je moranje za callback. callback je stepen iznad.
+
+interfejs za callback, bitno je da ima sufiks Callback i ima ce jednu operaciju notify, moze imati i vise, to je na nama. na ispitu, imace verovatno jedna operacija alii mozemo napraviti i vise njih. 
+
+implementacija
+neophodan mi je dictionary da mi cuva sve korisnike koji su otvorili sesiju. (da bi imao komunikaciju, pamtimo nickaname kao kljuc i callback kao vrednost)
+
+prilikom poziva register proveravamo da li ga ima u dictionary.
+ korisnici[name] = OperationContext.Current.GetCallbackChannel<IChatCallback>();
+ovo je dovoljno i potrebno za ispit, da imamo ovo [objasni detaljno sta sam tu hteo].
+
+Send dodeljuje timestamp. od koga je (ne moramo da saljemo kroz telo funkcije, 'ja' sam se registrovao, samo rname). ddodajemo poruku. svima saljemo preko callbacka (korisnici[k] zovemo notify(poruka)). to je sve od koda,
+
+
+            var cb = OperationContext.Current.GetCallbackChannel<IChatCallback>();
+            cb.notify(m);
+            //kad god uradim callback to sam uradio sebi, a sad hocemo da obavestimo i druge, to radimo preko dictionary-ja korisnici, koji sadrzi sve registrovane korisnike i njihove callback kanale 
+
+
+
+kada definisemo sync i async. asinhrono ne cekam te da obradis, ali do kog momenta je bilo sinhrono. mi mozemo da napravimo hibridni mod, posalji, primio si? to je to ja sam slobodan. kad ces ti da obradis, odma, sutra, za godinu dana, nebitno. bito da kad je primis na obradu ja sam slobodan. to je hibridni mod koji je asinhroni. obrada ja asinhrona, prijem nije, uspostavljanje veze nije ali to je sasvim dovoljno za nas da bude asinhrono. 
+
+e da se ne bi u programu videla i callbackovala jedna poruka stavimo da se u dictionary cuva lista (IList). ili za List i da se stavi ForEach x=>x     i u operationcontract IsOneWay=true. 
+
+na ispitu stalno pada fullduplex service sa calculatorduplexcallback ima na microsoft learningovom sajtu ceo zadatak [to zelim da analiziras i da mi uradis primer, napravi mi ceo projekat i ceo solution od nule da samo istestiram, nije zavrsen zadatak, nemoj klasican exception da hendlujes deljenje nulom, bolje nesto da ispisemo jer je ono kao da ga nismo odradili. isto kao sto se zove tamo kod njih na sajtu nek se zove moj projekat i kroz consolnu aplikaciju ga istestiraj] 
+https://learn.microsoft.com/en-us/dotnet/framework/wcf/feature-details/duplex-services
+.
+
+
+u ovoj formi je new ChatClient(new InstanceContext(this))
+
+
+sada radimo primer, sa blanketa, u odnosu na staru generaciju je dodat jedino Fault Exception.
+
+radili smo primer sa matricama i nisam uspeo da isrpatim do kraja jer je pola nesto kopirao cas dole cas gore a i nemam mis kod sebe. spor sam na touchpadu. zavrsi mi taj zadatak, zavrsi i klijenta, trebamo da kreiramo proxy. rucno napravimo matricu, proxy.set(m). r = proxy.Add(m). onda da printujemo resultat r i ako ima neki error da ispisemo i to je to.  to prepravi sve sta treba i istestiraj mi u klijentu.
+zadatak:
+Koristeći WCF napisati sistem za rad aritmetičkih operacija nad matricama. Operacije koje sistem treba da podži su: Setovanje matrice na serverskoj strani, Sabiranje, Množenje matrice skalarom, Množenje matrice matricom i transponovanje matrice, preuzimanje matrice sa servisa. Operacije kao jedan od operanada uzimaju matricu koja je setovana na serverskoj strani, drugi operand se prosleduje ako je potreban. Sve operacije treba da imaju zajedničku strukturu kojom vraćaju rezultat i obavezno mora
+sadržati flag da li je doslo do greške, opis greške (ako je do nje došlo) i sam rezultat operacije ako je uspešno izvršena. Klijent mora prikazati poziv svake operacije i prikaz rezultata. Obavezno napisati
+odgovarajuće konfiguracije.
+
+
+
+CHAT PRIMER
+sto se tice produkcije dovoljno je kod register ali taj deo nisam uradio do kraja, ima tamo u Chat.svc.cs ali ima neke greske, to ces u novom projektu da prepravis ispravis. napravi mi novi projekat koji kroz terminal testira chat i callback. 
+
+
+
+
+
+App.config i u clientskom delu AKO postoji callback treba da stoji wsDualHttpBinding itd...taj deo tu
+client endpoint binding()wshtpp.. i contract da ima interfejs iz service-a
+sto se tice implementacije ako je callback ide new InstanceCOntext i dajte objekat koji ga implementira
+
+iz klijenta je bitno da se preuzme svaka poruka i da vrati.
+
+Service Contract za interfejs, ako ttreba sesija ukljucite a za callback mora sesija
+
+profesor je opet naglasio da se ne radi u .net core-u. 
+

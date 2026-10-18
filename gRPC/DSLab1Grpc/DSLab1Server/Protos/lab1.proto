@@ -1,0 +1,18 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "DSLab1Server";
+package dslab1;
+
+service Lab1Service {
+  rpc PostaviAcc(FibRequest) returns (google.protobuf.Empty);
+  rpc ObradiTok(stream NumberData) returns (stream NumberData);
+}
+
+message FibRequest {
+  int32 n = 1;
+}
+
+message NumberData {
+  int32 value = 1;
+}

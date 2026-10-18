@@ -1,0 +1,68 @@
+# Build and binary directories
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]uild/
+packages/
+TestResults/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Java compiled class files & archives
+*.class
+*.jar
+*.war
+*.ear
+
+# C / C++ build outputs
+*.exe
+*.o
+*.obj
+*.pdb
+*.ilk
+*.idb
+*.out
+*.app
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.temps/
+.agents/
+.codex-plugins/
+.zips/
+
+# Documents & archives
+*.docx
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db

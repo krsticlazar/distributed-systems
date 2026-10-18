@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ProizvodnjaService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSDualHttpBinding_IProizvodnjaService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsrm:RMAssertion xmlns:wsrm="http://schemas.xmlsoap.org/ws/2005/02/rm/policy">
+          <wsrm:InactivityTimeout Milliseconds="600000" />
+          <wsrm:AcknowledgementInterval Milliseconds="200" />
+        </wsrm:RMAssertion>
+        <cdp:CompositeDuplex xmlns:cdp="http://schemas.microsoft.com/net/2006/06/duplex" />
+        <ow:OneWay xmlns:ow="http://schemas.microsoft.com/ws/2005/05/routing/policy" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:55103/ProizvodnjaService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:55103/ProizvodnjaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:55103/ProizvodnjaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFProizvodnjaServer" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProizvodnjaService_RegistrujKorisnika_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrujKorisnika" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_RegistrujKorisnika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrujKorisnikaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_DodajProizvod_InputMessage">
+    <wsdl:part name="parameters" element="tns:DodajProizvod" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_DodajProizvod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DodajProizvodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_VratiProizvode_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiProizvode" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_VratiProizvode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiProizvodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_ZakljucajProizvod_InputMessage">
+    <wsdl:part name="parameters" element="tns:ZakljucajProizvod" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_ZakljucajProizvod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ZakljucajProizvodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_PovecajProizvodnju_InputMessage">
+    <wsdl:part name="parameters" element="tns:PovecajProizvodnju" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_PovecajProizvodnju_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PovecajProizvodnjuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_OtkljucajProizvod_InputMessage">
+    <wsdl:part name="parameters" element="tns:OtkljucajProizvod" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_OtkljucajProizvod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OtkljucajProizvodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProizvodnjaService_Obavestenje_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Obavestenje" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="IProizvodnjaService">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="RegistrujKorisnika">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProizvodnjaService/RegistrujKorisnika" message="tns:IProizvodnjaService_RegistrujKorisnika_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProizvodnjaService/RegistrujKorisnikaResponse" message="tns:IProizvodnjaService_RegistrujKorisnika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DodajProizvod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProizvodnjaService/DodajProizvod" message="tns:IProizvodnjaService_DodajProizvod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProizvodnjaService/DodajProizvodResponse" message="tns:IProizvodnjaService_DodajProizvod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="VratiProizvode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProizvodnjaService/VratiProizvode" message="tns:IProizvodnjaService_VratiProizvode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProizvodnjaService/VratiProizvodeResponse" message="tns:IProizvodnjaService_VratiProizvode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ZakljucajProizvod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProizvodnjaService/ZakljucajProizvod" message="tns:IProizvodnjaService_ZakljucajProizvod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProizvodnjaService/ZakljucajProizvodResponse" message="tns:IProizvodnjaService_ZakljucajProizvod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="PovecajProizvodnju">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProizvodnjaService/PovecajProizvodnju" message="tns:IProizvodnjaService_PovecajProizvodnju_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProizvodnjaService/PovecajProizvodnjuResponse" message="tns:IProizvodnjaService_PovecajProizvodnju_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="OtkljucajProizvod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProizvodnjaService/OtkljucajProizvod" message="tns:IProizvodnjaService_OtkljucajProizvod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProizvodnjaService/OtkljucajProizvodResponse" message="tns:IProizvodnjaService_OtkljucajProizvod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Obavestenje">
+      <wsdl:output wsaw:Action="http://tempuri.org/IProizvodnjaService/Obavestenje" message="tns:IProizvodnjaService_Obavestenje_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSDualHttpBinding_IProizvodnjaService" type="tns:IProizvodnjaService">
+    <wsp:PolicyReference URI="#WSDualHttpBinding_IProizvodnjaService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrujKorisnika">
+      <soap12:operation soapAction="http://tempuri.org/IProizvodnjaService/RegistrujKorisnika" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DodajProizvod">
+      <soap12:operation soapAction="http://tempuri.org/IProizvodnjaService/DodajProizvod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VratiProizvode">
+      <soap12:operation soapAction="http://tempuri.org/IProizvodnjaService/VratiProizvode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZakljucajProizvod">
+      <soap12:operation soapAction="http://tempuri.org/IProizvodnjaService/ZakljucajProizvod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PovecajProizvodnju">
+      <soap12:operation soapAction="http://tempuri.org/IProizvodnjaService/PovecajProizvodnju" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OtkljucajProizvod">
+      <soap12:operation soapAction="http://tempuri.org/IProizvodnjaService/OtkljucajProizvod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Obavestenje">
+      <soap12:operation soapAction="http://tempuri.org/IProizvodnjaService/Obavestenje" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProizvodnjaService">
+    <wsdl:port name="WSDualHttpBinding_IProizvodnjaService" binding="tns:WSDualHttpBinding_IProizvodnjaService">
+      <soap12:address location="http://localhost:55103/ProizvodnjaService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:55103/ProizvodnjaService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

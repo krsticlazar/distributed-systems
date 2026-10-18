@@ -1,0 +1,20 @@
+Iz foldera "Ispit JUN24":
+
+javac *.java
+
+Terminal 1 - server:
+
+java Server
+
+Terminal 2 - klijent koji slusa topic:
+
+java Klijent sub sport
+
+Terminal 3 - klijent koji salje poruku:
+
+java Klijent pub sport Gol "Domaci tim vodi 1:0"
+
+Ako server nije na istom racunaru:
+
+java Klijent IP_ADRESA_SERVERA sub sport
+java Klijent IP_ADRESA_SERVERA pub sport Gol "Domaci tim vodi 1:0"

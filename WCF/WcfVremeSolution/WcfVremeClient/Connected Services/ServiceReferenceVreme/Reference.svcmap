@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="123072cc-b951-4943-8c71-e03dc3d0fc42" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:61505/VremeServis.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VremeServis.xsd" MetadataType="Schema" ID="f2a13cf8-5cd6-4c4d-a74d-a38557b5f4ed" SourceId="1" SourceUrl="http://localhost:61505/VremeServis.svc?xsd=xsd0" />
+    <MetadataFile FileName="VremeServis.disco" MetadataType="Disco" ID="50ce6eca-2415-495c-940c-3161b9e4ed54" SourceId="1" SourceUrl="http://localhost:61505/VremeServis.svc?disco" />
+    <MetadataFile FileName="VremeServis1.xsd" MetadataType="Schema" ID="984dcc50-a9d2-4d4a-9ad3-9a3baf3ca1ec" SourceId="1" SourceUrl="http://localhost:61505/VremeServis.svc?xsd=xsd1" />
+    <MetadataFile FileName="VremeServis2.xsd" MetadataType="Schema" ID="17b38b31-beab-4ab2-9b4b-09c2aeffabc5" SourceId="1" SourceUrl="http://localhost:61505/VremeServis.svc?xsd=xsd2" />
+    <MetadataFile FileName="VremeServis.wsdl" MetadataType="Wsdl" ID="616ad9b6-9c17-4efe-aa5c-a6bd3cf69122" SourceId="1" SourceUrl="http://localhost:61505/VremeServis.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

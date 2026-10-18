@@ -1,0 +1,15 @@
+Iz foldera "Dodatni 01":
+
+javac *.java
+
+Terminal 1:
+
+java Server
+
+Terminal 2:
+
+java Klijent
+
+Glasanje sa prosledjenim biracem i kandidatom:
+
+java Klijent localhost BIRAC-200 1

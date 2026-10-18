@@ -1,0 +1,12 @@
+[JUN 2024]
+U .NET-u, koristeci gRPC, kreirati servis za upravljanje listom poruka. Servis treba da omoguci klijentima da
+dodaju i brisu poruke, i prikazu sve poruke.
+
+Definisati proto fajl (message.proto) koji daje specifikaciju servisa i poruka. Servis treba da podrzava sledece
+operacije:
+- SendMessage: dodaje novu poruku na listu.
+- DeleteMessage: brise poruku sa zadatim ID-jem.
+- ListMessages: dobije tok podataka koji sadrzi sve poruke.
+
+Implementirati gRPC server definisan u message.proto fajlu.
+

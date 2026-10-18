@@ -1,0 +1,11 @@
+Iz foldera "Lab 05":
+
+javac *.java
+java Server
+
+U drugom terminalu:
+
+java Klijent
+
+Test id eksponata:
+EKS_997

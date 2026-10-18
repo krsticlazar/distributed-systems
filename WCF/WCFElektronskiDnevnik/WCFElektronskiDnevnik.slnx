@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WCFElektronskiDnevnikClient/WCFElektronskiDnevnikClient.csproj" Id="50000000-0000-0000-0000-000000000502" />
+  <Project Path="WCFElektronskiDnevnikServer/WCFElektronskiDnevnikServer.csproj" Id="50000000-0000-0000-0000-000000000501" />
+</Solution>

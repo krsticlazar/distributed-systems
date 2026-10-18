@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="01a6fa8d-f366-4e68-adfd-96883d79d7c4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50166/Sokovi.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Sokovi.xsd" MetadataType="Schema" ID="f0a11ca3-445c-46c7-a7cb-611900344d63" SourceId="1" SourceUrl="http://localhost:50166/Sokovi.svc?xsd=xsd1" />
+    <MetadataFile FileName="Sokovi.disco" MetadataType="Disco" ID="160f844f-1850-46cc-83ed-2bb9365d6bef" SourceId="1" SourceUrl="http://localhost:50166/Sokovi.svc?disco" />
+    <MetadataFile FileName="Sokovi1.xsd" MetadataType="Schema" ID="659cf441-aefe-4c07-8ea9-02923364b0b9" SourceId="1" SourceUrl="http://localhost:50166/Sokovi.svc?xsd=xsd0" />
+    <MetadataFile FileName="Sokovi2.xsd" MetadataType="Schema" ID="f4253e1a-c7c9-4c48-a00c-67d949ad84df" SourceId="1" SourceUrl="http://localhost:50166/Sokovi.svc?xsd=xsd2" />
+    <MetadataFile FileName="Sokovi.wsdl" MetadataType="Wsdl" ID="b7381132-931b-4d63-bb32-d664303ace32" SourceId="1" SourceUrl="http://localhost:50166/Sokovi.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

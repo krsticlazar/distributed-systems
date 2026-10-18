@@ -1,0 +1,15 @@
+Iz foldera "Lab 01":
+
+javac *.java
+
+Terminal 1:
+
+java Server
+
+Terminal 2:
+
+java Klijent
+
+Ako server nije na istom racunaru:
+
+java Klijent IP_ADRESA_SERVERA

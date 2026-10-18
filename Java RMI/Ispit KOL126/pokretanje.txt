@@ -1,0 +1,19 @@
+Iz foldera "Ispit KOL126":
+
+javac *.java
+
+Terminal 1 - server:
+
+java Server
+
+Terminal 2 - klijent koji prati cene:
+
+java Client
+
+Terminal 3 - administrator:
+
+java AdminClient
+
+Promena konkretne akcije i cene:
+
+java AdminClient localhost 2 250.75

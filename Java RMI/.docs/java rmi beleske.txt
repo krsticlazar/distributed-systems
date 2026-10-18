@@ -1,0 +1,38 @@
+iz klijenta, lokalna metoda zeli da pozove neku sa servera, to radi preko stub-a, on mora da zna IP adresu i port gde se nalazi objekat (sa metodama) koji je na serveru i mora da zna njegov ObjectId,. U serveru se trazi skeleton, ako u serverskom delu imamo npr Object1 i Object2  skeleton ce znati koji se ObjectId prosledi i onda ce naci odgovarajuci Object koji trazimo (radi njegovog stanja/metoda).
+
+JAVA RMI je enkapsulirao Client STUB i Server Skeleton,to je apstraktno i mi nemamo pristup pozadini. Mi samo pisemo JAVA RMI KLASE, koje su slicne kao klasicne za OOP. 
+
+razlika izmedju procedura i funkcija - procedura mogu imati vise povratnih vrednosti, f-je 1.
+
+takodje, da metode imaju argumente i oni bi se enkapsuirali sa IPadresom, portom i ObjectId i slalo bi se Server Skeletonu. 
+
+Sta ako server ima 10+ objekta?
+klijent mora da zna za svih 10 ID-eve, to nije dobra ideja jer oni trebaju da budu maksimalno izolovani (sever-slient). To se radi pomocu Remote Object Registy, server kada kreira neki objekat upisuje ga u RMI Registry i on dobija url, tu kazemo Obj1 se nalazi na localhostu 1030 npr /obj1 (moramo da znamo IPadressu, port i ObjId). Tako registruje jedan objekat, drugi npr ce da bude na localhost:1992, ip adresa i port mogu biti isti ali ovde je /obj2.
+klijent trazi localhost:1099 i to je port koji slusa RMI Registar taj nas jedino zanima nas kao programere, tu nije objekat doduse, to zavisi od /obj... ; 
+
+7. slajd:
+port na koji slusa RMI registar:
+rmi://hostname:port/name
+ili
+rmi://crapper.pk.org:12345/MyServer
+
+
+Remote interfejs:
+mora da se malo razlikuje od standardnog java oo interfejsa
+public Interfejs extends java.rmi.remote {
+	//bitno je da sve metode budu javne
+	public metod() throws java.rmi.Remote.Exception;
+} 
+
+ovo je samo interfejs, njega ne mozemo da instanciramo vec moramo da napravimo klasu koja enkapsulira objekat koji nam treba, on implementira ovaj interfejs
+
+ta klasa mora da nasledi UnicastRemote klasu
+public class Class1 extends UnicastRemoteObject implements Interfejs{
+	public metoda1() 
+}
+
+klijent sada mora da poziva samo metode iz interfejsa
+ove iz nasledjenje klase mogu da budu samo za prihvatanje elemenata
+
+
+ 

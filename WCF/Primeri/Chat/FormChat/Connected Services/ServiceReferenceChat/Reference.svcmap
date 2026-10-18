@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="62949d43-c384-45a8-b8dc-a16f966ce12f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50905/Chat.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Chat.xsd" MetadataType="Schema" ID="2250141e-54f2-4adf-afbb-2adc6650b8bd" SourceId="1" SourceUrl="http://localhost:50905/Chat.svc?xsd=xsd0" />
+    <MetadataFile FileName="Chat.disco" MetadataType="Disco" ID="13104519-1401-4e78-8f7f-50facddf42b8" SourceId="1" SourceUrl="http://localhost:50905/Chat.svc?disco" />
+    <MetadataFile FileName="Chat.wsdl" MetadataType="Wsdl" ID="13e77612-3ea2-49e4-ac30-da09b65d4a48" SourceId="1" SourceUrl="http://localhost:50905/Chat.svc?wsdl" />
+    <MetadataFile FileName="Chat1.xsd" MetadataType="Schema" ID="bfaf648d-df76-4f50-afd2-4860d32c983f" SourceId="1" SourceUrl="http://localhost:50905/Chat.svc?xsd=xsd2" />
+    <MetadataFile FileName="Chat2.xsd" MetadataType="Schema" ID="67c9dbf3-4312-4f77-9e91-ae779ac2bc17" SourceId="1" SourceUrl="http://localhost:50905/Chat.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

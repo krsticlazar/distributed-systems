@@ -1,0 +1,11 @@
+Iz foldera "Lab 04":
+
+javac *.java
+java Server
+
+U drugom terminalu:
+
+java Klijent
+
+Test broj indeksa:
+9841

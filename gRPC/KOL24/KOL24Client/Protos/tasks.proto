@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "KOL24Client";
+package kol24;
+
+service TaskManager {
+  rpc AddTask(AddTaskRequest) returns (TaskResponse);
+  rpc ListTasks(google.protobuf.Empty) returns (TaskList);
+  rpc MarkTaskAsCompleted(TaskIdRequest) returns (TaskResponse);
+}
+
+message AddTaskRequest {
+  string description = 1;
+}
+
+message TaskIdRequest {
+  int32 id = 1;
+}
+
+message TaskItem {
+  int32 id = 1;
+  string description = 2;
+  bool completed = 3;
+}
+
+message TaskList {
+  repeated TaskItem tasks = 1;
+}
+
+message TaskResponse {
+  bool success = 1;
+  string message = 2;
+  TaskItem task = 3;
+}
+

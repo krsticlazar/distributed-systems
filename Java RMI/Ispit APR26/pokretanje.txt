@@ -1,0 +1,12 @@
+Iz foldera "Ispit APR26":
+
+javac *.java
+java Server
+
+U drugom terminalu:
+
+java Klijent
+
+Primer unosa:
+10
+30

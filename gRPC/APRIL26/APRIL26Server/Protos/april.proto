@@ -1,0 +1,32 @@
+/*
+[APRIL 2026]
+U .NET-u, koristeci gRPC, napisati servis koji simulira rad kalkulatora koji
+podrzava operaciju sabiranja, oduzimanja, mnozenja i deljenja celih brojeva.
+Svaka operacija prihvata dva cela broja kao argument, a povratna vrednost
+treba sadrzati polja operand1, operand2, operacija i rezultat.
+Definisati i proto fajl (april.proto) koji daje specifikaciju servisa i poruka.
+*/
+
+syntax = "proto3";
+
+option csharp_namespace = "APRIL26Server";
+package april26;
+
+service Calculator {
+	rpc Sabiranje(OperacijaRequest) returns (RezultatResponse);
+	rpc Oduzimanje(OperacijaRequest) returns (RezultatResponse);
+	rpc Mnozenje(OperacijaRequest) returns(RezultatResponse);
+	rpc Deljenje(OperacijaRequest) returns(RezultatResponse);
+}
+
+message OperacijaRequest {
+	int32 operand1=1;
+	int32 operand2=2;
+}
+
+message RezultatResponse{
+	int32 operand1=1;
+	int32 operand2=2;
+	string operacija=3;
+	int32 rezultat=4;
+}

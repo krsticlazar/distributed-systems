@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFProizvodnjaServer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFProizvodnjaServer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="OperationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsError" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationResult" nillable="true" type="tns:OperationResult" />
+  <xs:complexType name="ArrayOfProizvod">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Proizvod" nillable="true" type="tns:Proizvod" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProizvod" nillable="true" type="tns:ArrayOfProizvod" />
+  <xs:complexType name="Proizvod">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProizvedenaKolicina" type="xs:int" />
+      <xs:element minOccurs="0" name="ZakljucaoKorisnik" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Proizvod" nillable="true" type="tns:Proizvod" />
+</xs:schema>

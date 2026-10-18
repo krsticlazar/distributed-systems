@@ -1,0 +1,124 @@
+2.
+grupne operacije
+ideja kod i-o mpi je da maksimalno optimizujemo citanje i upis, sve fje koje smo koristili u terminu 1 su bile sa pokazivacima koja je odrzavala i svaka jedinica je upisivala u onom momentu kada se pozovewrite i nije bilo grupnog upisa vec je bilo pojeinacnog upisa. proces sa rankom 0 uopste ne ceka ostale procese, u onom monentu kad pozove i ako mu hardverski resursi omogucavaju upis-citanje on to radi.
+najveca latencija (najvise se gubi vremena) - pristup memoriji a jos sporije je pristup disku a cpu to gleda kao i/o. 
+
+sta da svaki proces ima svoju latenciju pristupa disku, to je lose jer se to sabira-mnozi. u mpi-u zelimo to da popravimo
+
+3.
+
+4.
+svaki proces ce da ceka da se njemu medjusobno zavrsi i-o kao i ostali. 
+ukoliko se na ispitu od nas ne ocekuje maksimalna optimizacija ne trebamo ovo da radimo, da li su pokazivaci eksplicitni i ostalo na to obracamo paznju
+
+5.
+jedino menjamo funkciju koju pozivamo, argumenti su isti
+
+6.
+round-robin princip -> ciklicno se izvrsava citanje
+
+7.
+otvaramo fajl za citanje
+biramo izvedeni tip podatka
+svaki proces ce citati svoju porciju podataka
+broj bytova koje ce da cita je broj ... (nisam zapisao)
+
+
+MORAMO DA VODIMO RACUNA STA SE TRAZI U ZADATKU, ako se radi u bytovima, ONDA RADIMO BYTOVE
+
+zatim kreiramo vektor, nints je koliko integera cita P0 (i ostali)
+nas interesuje koliko integera bo bloku se cita.
+to dobijamo nints/INTS_PER_BLK
+
+pomeraj izmedju p0 (odakle pocinje da pise p0) pa idu sledeci pa ide opet p0, to je INTS_PER_BLK * nprocs
+
+8.
+izvedeni tip izgleda ovako:
+svaki proces ce procita 80B (imamo 10 procesa)
+nints je 80/4 je 20
+integera po bloku ce citati 5
+ukupan broj blokova je koliko ce integera procitati 
+(ovo mi nije jasno sto 5)
+
+
+9. 
+svaki ima drugaciji pogled jer ne krece sa iste pozicije
+set view nam sluzi da setujemo offset, uvek je jedinica byte a to je sizeof(int)*ints_per_blk*rank
+
+10. 
+file read all - najbitnije ono nase
+
+13.
+kako da pristupamo podmatricama unutar matrica itd.
+(na paralelnim nas bombarduju vrstama matrica i ostalo)
+
+14. i 15.
+darray
+size je niz, rank naravno ide, 
+ndims je broj dimenzija globalnog polja, u koliko dimenzija ce biti distribuiran niz, mi matricu zelimo da distribuiramo u 2 dimenzije 
+psizes - broj procesa u svakoj dimenziji u kojoj ce biti distrbuirana matrica, ako je ona 2x3 ali procesi u kojima je distriburiana po crstama 3 a po kolonama 2
+ostalo nisam skapirao, treba pojasnjenje
+
+16.
+subarray
+
+TREBA MI OBJASNJENJE ZA DARRAY I SUBARRAY detaljno, bas nista nisam razumeo
+
+19.
+mpi wait - nije nam neophodno da imamo neku while petlji ili sta god
+
+21.
+bitno je da kad se vrsi upis da se nesto racuna, kod citanja je logicnije jos da se cita i da zahtevamo neke podatke unapred i da u medjuvremenu vrisimo neku obradu podataka i onda nije opet potrebno read request i ostalo nego ih vec imamo
+
+22. 
+write all begin i end, neophodno je da oznacimo kad pocinje asinhroni upis podataka i kada se zavrsava.
+[do sad nije padalo na ispitu - stavi podsetnik!]
+
+23. [jos jedan tip funkcije koji pada na ispitu]
+
+svaki proces je azurirao pokazivac a ostali ne vide da se pomerio jer svako ima svoj
+u ovoj situaciji imamo jedna pokazivac koji je deljen na nivou mpi i svaki proces ga deli kako vrsi i-o operacije i svi vide da se promenila vrednost pokazivaca ili se pomerio pokazivac
+ove fje se koriste u situaciji kada zelimo da ucitamo podatke a koji deo podatka ide kom procesu nas ne interesuje, jer se ne zna redosled pristupanja i ne mozemo da garantujemo ko koji proces cita
+
+26. 
+e sad imamo iwrite i iread shared
+svi procesi moraju da pozovu tu funkciju da bi se zaista izvrsilo pisanje ili citanje
+
+
+
+
+VRACAMO SE NA POCETKA PREZENTACIJE, slajd 5. kada  
+ovde nemamo poziv grupnog komunikatora
+neophodno je da otvorimo fajl, mpi file openfde
+
+
+27.
+vodimo racuna o redu da su svi podaci upisani pre nego sto ih neko procita, ne interesuje nas konzistentnost ako vrsimo citanje, to nam je nebitno, problem moze da nastaje kada isti deo podatka jedan P zahteva upis a drugi citanje pa ce mozda da se desi nesto neocekivano, tada moramo da vodimo racuna o konzistentnosti
+p0 cita podatke od 0 do 100 bajta, upisace i procitace te podatke
+p1 upisuje od 100 narednih 100 i isto ce da procita
+
+28.
+to se radi kada setujemo atomicnost
+sto se tica atomicnosti upisa, tj kako C i baze funkcionisu, da li se upis koristi u momentu izvrsaenja upisa?
+u OS smo morali da flushujemo izlaz da bi imali dobar prikaz stampanja, mi zelimo da buferujemo u samom programu ili tehnologija da baferuje pa da izvrsi upis kada ona smatra.
+zato setujemo atomicnost da ce se atomicno izvrsiti upis na nivou fajla, sledece je barrier, zasto smo to stavili? sta ako zelimo da atomicno upisemo podatke na disk. proces ce videti da je proces upisao o 0 do 100 bajta ali drugi proces nece videti ako nije atomicno, barijera postoji jer se tu sinhronizuje, tu oni garantuju da ce svi da izvrse atomicni upis (na nivou celog mpi comm world u fajl). setujemo atomicnost da bi proces zaista flushuje proces na disk a barijer da osiguramo da se ne desi da p1 zavrsio upis i zove citanje a ovaj drugi p2 jos nije zavrsio upis. moze se desiti da su se usaglasili da su zavrsili upis ali taj upis ne mora da znaci da se upisalo na disk nego u onom medjuprostoru koji odrzava C MPI. 
+
+
+29.
+grub, seljacki pristup, zatvaramo pa otvaramo fajl, barijera je neophodna i ovde da osiguramo da su svi upisali podatke. ovo je najpopularniji medju studentima i najlaksi za razumevanje. 
+
+svaki upis treba da se uradi u sekvencama, open, close i sync nam osiguravaju te sekvence.
+
+[na ovim prezentacijama ima dosta slika koda tako da ces morati da otvoris pdf i da pogledas te slike]
+30.
+p0
+mpi file open otvara neophodnu sekvencu
+neophodno je da stavimo sync kako bi se terminirala ukupna operacija koju smo zahtevali
+bitno je da upisi budu ograniceni sa mpi sync
+
+p0 nista ne radi ali posto p1 zove sync onda moraju svi da je imaj
+
+
+[za performanse najbolje da koristimo sync pa atomicno ali se to ne ocenjuje na ispitu, TI CES DA MI PREDLOZIS NAJLAKSI NACIN]
+
+

@@ -1,0 +1,14 @@
+KOL I 2026
+
+Koriscenjem Java RMI tehnologije napisati simulaciju sistema za pracenje cena akcija.
+Implementirati klasu Stock sa atributima int id, String companyName i double price.
+Klasa treba da ima metodu koja vraca String sa id-jem, nazivom kompanije i trenutnom cenom.
+
+StockService treba da omoguci:
+- vracanje liste svih akcija;
+- promenu cene akcije po id-ju;
+- pretplatu klijenata na promene cena.
+
+Callback interfejs sadrzi metodu priceChanged(int id, double newPrice).
+U konstruktoru servisa kreirati dve akcije. Server registruje StockService na portu 5099.
+Client prikazuje sve akcije i pretplacuje se na promene. AdminClient menja cenu jedne akcije.

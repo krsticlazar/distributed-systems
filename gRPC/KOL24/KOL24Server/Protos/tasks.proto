@@ -1,0 +1,51 @@
+/*
+[KOL 1 2024]
+U .NET-u, koristeci gRPC, kreirati servis za upravljanje listom zadataka. 
+Servis treba da omoguci klijentima da dodaju zadatke, prikazu sve zadatke 
+i oznace zadatke kao zavrsene.
+Zahtevi:
+- Definisati proto fajl (tasks.proto) koji daje specifikaciju servisa i poruka.
+- Servis treba da podrzava sledece operacije:
+  - AddTask: dodaje novi zadatak na listu.
+  - ListTasks: dobija listu svih zadataka.
+  - MarkTaskAsCompleted: oznacava zadatak kao zavrsen po njegovom ID-u.
+- Implementirati gRPC server definisan u tasks.proto fajlu.
+*/
+
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "KOL24Server";
+package kol24;
+
+service TaskManager {
+  rpc AddTask(AddTaskRequest) returns (TaskResponse);
+  rpc ListTasks(google.protobuf.Empty) returns (TaskList);
+  rpc MarkTaskAsCompleted(TaskIdRequest) returns (TaskResponse);
+}
+
+message AddTaskRequest {
+  string description = 1;
+}
+
+message TaskIdRequest {
+  int32 id = 1;
+}
+
+message TaskItem {
+  int32 id = 1;
+  string description = 2;
+  bool completed = 3;
+}
+
+message TaskList {
+  repeated TaskItem tasks = 1;
+}
+
+message TaskResponse {
+  bool success = 1;
+  string message = 2;
+  TaskItem task = 3;
+}
+

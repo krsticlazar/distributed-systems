@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="WcfVremeClient/WcfVremeClient.csproj" Id="10f88608-e2da-4225-b72a-db7d90ffe85b">
+    <BuildDependency Project="WcfVremeServer/WcfVremeServer.csproj" />
+  </Project>
+  <Project Path="WcfVremeServer/WcfVremeServer.csproj" Id="f10efb28-b7ef-4007-a750-7f0f93adfa2b" />
+</Solution>

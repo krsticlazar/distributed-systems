@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="WCFChatClient/WCFChatClient.csproj" Id="89437d7d-4c25-4e1f-805d-cdb4ca0b8a10">
+    <BuildDependency Project="WCFChatServer/WCFChatServer.csproj" />
+  </Project>
+  <Project Path="WCFChatServer/WCFChatServer.csproj" Id="3ca1661c-a068-4aef-ba4f-154a9d414d72" />
+</Solution>

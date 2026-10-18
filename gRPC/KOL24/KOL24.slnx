@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="tekstZadatka.txt" />
+    <File Path="objasnjenje.md" />
+  </Folder>
+  <Project Path="KOL24Client/KOL24Client.csproj" />
+  <Project Path="KOL24Server/KOL24Server.csproj" />
+</Solution>
+

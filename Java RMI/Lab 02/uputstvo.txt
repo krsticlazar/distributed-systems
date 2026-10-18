@@ -1,0 +1,11 @@
+Iz foldera "Lab 02":
+
+javac *.java
+java Server
+
+U drugom terminalu:
+
+java Klijent
+
+Test broj telefona:
+060123456

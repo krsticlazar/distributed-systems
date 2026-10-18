@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="WCFCalculatorDuplexClient/WCFCalculatorDuplexClient.csproj">
+    <BuildDependency Project="WCFCalculatorDuplexService/WCFCalculatorDuplexService.csproj" />
+  </Project>
+  <Project Path="WCFCalculatorDuplexService/WCFCalculatorDuplexService.csproj" />
+</Solution>

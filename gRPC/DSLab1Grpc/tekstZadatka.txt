@@ -1,0 +1,15 @@
+U .NET-u, koristeći gRPC, kreirati servis koji omogućava klijentima da pozovu sledeće procedure:
+
+	a. proceduru koja omogućava prosleđivanje celobrojnog podatka n. Servis računa n-ti član fibonačjievog niza i smešta ga u promenljivu acc definisanu unutar servisa. Procedura nema povratni tip.
+
+	b. proceduru koja prihvata tok celobrojnih podataka, svaki treći element toka množi promenljivom acc, dok od ostalih elemenata toka oduzima vrednost smeštenu u promenljivu acc, i vraća tako modifikovani tok klijentu.
+
+
+
+Pretpostaviti da je prilikom pokretanja servisa vrednost promenljive acc=1.
+
+U .NET-u kreirati gRPC klijenta koji će demonstrirati funkcionalnost gRPC servisa.
+
+
+
+ 

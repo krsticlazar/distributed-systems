@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ConsoleApp1/ConsoleApp1.csproj" Id="afd061d7-dad8-45bb-a890-dd238731aae3" />
+  <Project Path="WcfService1/WcfService1.csproj" Id="750dd5a2-9d0b-4390-9e84-9e96567e4dc8" />
+</Solution>

@@ -1,0 +1,5 @@
+APR26
+
+Koriscenjem Java RMI-a napisati serversku aplikaciju koja za primljena 2 prirodna broja N i M, prosledjena od strane klijenta, ima za cilj da generise sve proste brojeve izmedju brojeva N i M, pri cemu svaki od elemenata vraca klijentu cim se element izgenerise.
+
+Napisati klijentsku aplikaciju koja ce minimalno demonstrirati funkcionisanje sistema.

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WCFKvizClient/WCFKvizClient.csproj" Id="10000000-0000-0000-0000-000000000102" />
+  <Project Path="WCFKvizServer/WCFKvizServer.csproj" Id="10000000-0000-0000-0000-000000000101" />
+</Solution>

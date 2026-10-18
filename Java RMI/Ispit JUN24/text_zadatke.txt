@@ -1,0 +1,16 @@
+JUN24
+
+Koriscenjem Java RMI tehnologije napisati simulaciju MQTT brokera.
+MQTT broker je server koji razmenjuje poruke izmedju klijenata koriscenjem topika.
+Topik predstavlja string na osnovu koga se poruke, definisane naslovom i sadrzajem,
+filtriraju i dostavljaju odredjenim klijentima.
+
+Neophodno je implementirati metodu subscribe kako bi se klijent pretplatio na poruke
+pristigle na odredjeni topik, kao i metodu publish koja omogucava korisniku da posalje
+poruku na zeljeni topik.
+
+Klijent ne kreira topik eksplicitno, vec se topik, ukoliko ne postoji, kreira implicitno
+pozivom metode createTopic.
+
+Napisati serversku aplikaciju za hostovanje MQTT brokera i registrovati ga u RMI registar,
+kao i klijentsku aplikaciju koja ce minimalno demonstrirati funkcionisanje istog.

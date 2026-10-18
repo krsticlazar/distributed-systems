@@ -1,0 +1,12 @@
+DODATNI 01 - ELEKTRONSKO GLASANJE
+
+Koriscenjem Java RMI tehnologije napisati sistem za elektronsko glasanje.
+Glavni remote objekat Glasanje omogucava biracu da glasa prosledjivanjem
+jedinstvenog broja biraca i identifikatora kandidata. Jedan birac moze glasati
+samo jednom, a metoda vraca informaciju da li je glas uspesno evidentiran.
+
+Omoguciti preuzimanje rezultata za jednog kandidata. Rezultat sadrzi id kandidata,
+broj glasova i trenutno mesto i prenosi se klijentu kao podatak.
+
+U konstruktoru kreirati tri kandidata sa id vrednostima 1, 2 i 3. Server registruje
+servis na portu 1099. Klijent glasa i prikazuje rezultat kandidata.

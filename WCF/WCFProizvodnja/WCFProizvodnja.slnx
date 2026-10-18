@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WCFProizvodnjaClient/WCFProizvodnjaClient.csproj" Id="30000000-0000-0000-0000-000000000302" />
+  <Project Path="WCFProizvodnjaServer/WCFProizvodnjaServer.csproj" Id="30000000-0000-0000-0000-000000000301" />
+</Solution>

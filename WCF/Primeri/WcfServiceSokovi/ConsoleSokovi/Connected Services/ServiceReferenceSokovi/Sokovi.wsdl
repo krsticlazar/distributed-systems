@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="Sokovi" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:50166/Sokovi.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:50166/Sokovi.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:50166/Sokovi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfServiceSokovi" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISokovi_dodaj_InputMessage">
+    <wsdl:part name="parameters" element="tns:dodaj" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_dodaj_OutputMessage">
+    <wsdl:part name="parameters" element="tns:dodajResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_flasiraj_InputMessage">
+    <wsdl:part name="parameters" element="tns:flasiraj" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_flasiraj_OutputMessage">
+    <wsdl:part name="parameters" element="tns:flasirajResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_isprazni_InputMessage">
+    <wsdl:part name="parameters" element="tns:isprazni" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_isprazni_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isprazniResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_VratiStanje_InputMessage">
+    <wsdl:part name="parameters" element="tns:VratiStanje" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_VratiStanje_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VratiStanjeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_Promene_InputMessage">
+    <wsdl:part name="parameters" element="tns:Promene" />
+  </wsdl:message>
+  <wsdl:message name="ISokovi_Promene_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PromeneResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISokovi">
+    <wsdl:operation name="dodaj">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISokovi/dodaj" message="tns:ISokovi_dodaj_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISokovi/dodajResponse" message="tns:ISokovi_dodaj_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="flasiraj">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISokovi/flasiraj" message="tns:ISokovi_flasiraj_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISokovi/flasirajResponse" message="tns:ISokovi_flasiraj_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="isprazni">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISokovi/isprazni" message="tns:ISokovi_isprazni_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISokovi/isprazniResponse" message="tns:ISokovi_isprazni_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VratiStanje">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISokovi/VratiStanje" message="tns:ISokovi_VratiStanje_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISokovi/VratiStanjeResponse" message="tns:ISokovi_VratiStanje_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Promene">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISokovi/Promene" message="tns:ISokovi_Promene_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISokovi/PromeneResponse" message="tns:ISokovi_Promene_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISokovi" type="tns:ISokovi">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="dodaj">
+      <soap:operation soapAction="http://tempuri.org/ISokovi/dodaj" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="flasiraj">
+      <soap:operation soapAction="http://tempuri.org/ISokovi/flasiraj" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isprazni">
+      <soap:operation soapAction="http://tempuri.org/ISokovi/isprazni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VratiStanje">
+      <soap:operation soapAction="http://tempuri.org/ISokovi/VratiStanje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Promene">
+      <soap:operation soapAction="http://tempuri.org/ISokovi/Promene" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Sokovi">
+    <wsdl:port name="BasicHttpBinding_ISokovi" binding="tns:BasicHttpBinding_ISokovi">
+      <soap:address location="http://localhost:50166/Sokovi.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

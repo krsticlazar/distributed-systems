@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfServiceSokovi" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfServiceSokovi" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Sastojak">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Gustina" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Naziv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zapremina" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sastojak" nillable="true" type="tns:Sastojak" />
+  <xs:complexType name="Stanje">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Gustina" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Zauzece" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Stanje" nillable="true" type="tns:Stanje" />
+  <xs:complexType name="ArrayOfPromena">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Promena" nillable="true" type="tns:Promena" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPromena" nillable="true" type="tns:ArrayOfPromena" />
+  <xs:complexType name="Promena">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Datum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Sastojak" nillable="true" type="tns:Sastojak" />
+      <xs:element minOccurs="0" name="TipPromena" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zapremina" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Promena" nillable="true" type="tns:Promena" />
+</xs:schema>

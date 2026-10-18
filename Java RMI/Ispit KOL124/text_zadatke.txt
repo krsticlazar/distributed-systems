@@ -1,0 +1,28 @@
+KOL124
+
+Napisati RMI kod koji implementira udaljeni pristup serveru za pracenje rezultata fudbalskih utakmica.
+
+Implementirati klasu Match sa atributima:
+int id, String homeTeam, String awayTeam, int homeGoals, int awayGoals, Stadium stadium.
+Stadium ima atribute String name i String city.
+
+Metode klase Match treba da omoguce korisniku da doda gol domacem, odnosno gostujucem timu,
+i da preuzme stadion na kome se igra utakmica. Pored toga, potrebno je implementirati udaljenu
+metodu koja ce vratiti String literal koji ce sadrzati id i trenutni rezultat utakmice.
+
+Potrebno je omoguciti korisnicima da se pretplate na promenu rezultata utakmice. Callback interfejs
+sadrzi potpis udaljene metode resultChanged(int matchId).
+
+Klasa FootballScore treba da omoguci klijentima da pozovu metodu koja vraca String literal koji ce
+sadrzati identifikatore i rezultate svih utakmica koje postoje u sistemu, kao i metodu za preuzimanje
+jedne utakmice. U konstruktoru klase kreirati dva objekta klase Match, cije su vrednosti identifikatora
+1 i 2, respektivno, i smestiti ih u odgovarajucu strukturu podataka.
+
+Implementirati serversku klasu Server koja kreira objekat klase FootballScore i upisuje ga u RMI
+registar na portu 4096.
+
+Kod klijentske klase ClientUser treba da prikaze sve utakmice, naziv stadiona na kome se igra utakmica
+sa id-jem 2, da se pretplati na dogadjaje utakmice sa id-jem 1, kao i da implementira Callback interfejs
+tako da korisnik bude u toku sa rezultatom utakmice.
+
+Kod klijentske klase ClientAdmin treba da doda gol domacem timu utakmice sa id-jem 1.

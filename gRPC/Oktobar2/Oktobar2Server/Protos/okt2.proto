@@ -1,0 +1,18 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "Oktobar2Server";
+package oktobar2;
+
+service Okt2Service {
+	rpc ObradiBrojeve(stream NumberPair) returns (stream RetMessage);
+}
+
+message NumberPair {
+	int32 a = 1;
+	int32 b = 2;
+}
+
+message RetMessage {
+	string message = 1;
+}

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.WSHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;WSHttpBinding_IServiceVreme&quot; /&gt;" bindingType="wsHttpBinding" name="WSHttpBinding_IServiceVreme" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://localhost:55509/ServiceVreme.svc&quot; binding=&quot;wsHttpBinding&quot; bindingConfiguration=&quot;WSHttpBinding_IServiceVreme&quot; contract=&quot;ServiceReferenceTest.IServiceVreme&quot; name=&quot;WSHttpBinding_IServiceVreme&quot;&gt;&lt;identity&gt;&lt;userPrincipalName value=&quot;DESKTOP-08ILSI4\lt1-abb-534&quot; /&gt;&lt;/identity&gt;&lt;/Data&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://localhost:55509/ServiceVreme.svc&quot; binding=&quot;wsHttpBinding&quot; bindingConfiguration=&quot;WSHttpBinding_IServiceVreme&quot; contract=&quot;ServiceReferenceTest.IServiceVreme&quot; name=&quot;WSHttpBinding_IServiceVreme&quot;&gt;&lt;identity&gt;&lt;userPrincipalName value=&quot;DESKTOP-08ILSI4\lt1-abb-534&quot; /&gt;&lt;/identity&gt;&lt;/Data&gt;" contractName="ServiceReferenceTest.IServiceVreme" name="WSHttpBinding_IServiceVreme" />
+  </endpoints>
+</configurationSnapshot>

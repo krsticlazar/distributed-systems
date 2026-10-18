@@ -1,0 +1,49 @@
+ako imamo na serveru neki remote accumulator, ako ga C1 promeni, pa ga C2 getuje i on ga izmeni, C1 nema uvid koliko je on zapravo, mora non stop da ga trazi i ispituje, to nije resenje, sta ako imamo 100 klijenata.
+
+zato sluzi callback. 
+Ideja: umesto da klijent ispituje stalno da li su se desili neki događaji na serveru, server ih informiše svaki put kad se događaj od interesa desi
+
+CALBACK -> server obavestava klijenta da se desio neki dogadjaj
+
+kako da iskoristimo situaciju da klijent hostuje neki objekat da bi ga server obavestavao?
+
+nakon svakog azuriranja stanja moramo da pozovemo callback na objektu (client host objekat). 
+npr 
+u klijentu imamo metodu getAgainAcc()
+na serveru: callbackObj.getAgainAcc()
+
+za callback situaciju, server nije server nego klijent. e sad, da li ce da vrsi azuriranje uvek to zavisi kako isprogramiramo, da li je klijent duzan da uvek zove callback
+
+taj callback objekat se prosledjuje od klijenta do servera. server obezbedi jednu metodu 
+register(Callback obj){
+	callbacksadd(obj)	
+}
+tu naravno treba da ide for petlja koja ide kroz svaki element(objekat)
+
+klijent mora da ima klasu koja nasledjuje Unicast Remote Object InstObj 
+
+klijent da bi se registrovao, mora da uzme stub od servera 
+
+
+
+    public class CallbackImpl extends UnicastRemoteObject implements Callback {
+
+        protected CallbackImpl() throws RemoteException {
+            super();
+        }
+
+        public void accChanged() throws RemoteException {
+            getAcc();
+        }
+
+    }
+
+
+
+to je podklasa unutar klase clijent i ona ima pristup funkcijama nadklase, npr getAcc sto kasije zove client da vrati .
+
+
+
+na ispitu nece da se trazi validacija, takodje, ne trebamo da pisemo try catch blokovu, da inkludujemo i importujemo sve ove pakete, btin oda ispostujemo da interfejs extenduje Remote i da implementacija extenduje unicast remote object i implementira taj interfejs
+
+za ispit se ne opterecujemo oko sitnica i detalja 

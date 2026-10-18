@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="tekstZadatka.txt" />
+  </Folder>
+  <Project Path="APRIL26Client/APRIL26Client.csproj" />
+  <Project Path="APRIL26Server/APRIL26Server.csproj" />
+</Solution>
+

@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="tekstZadatka.txt" />
+    <File Path="objasnjenje.md" />
+  </Folder>
+  <Project Path="JUN24Client/JUN24Client.csproj" />
+  <Project Path="JUN24Server/JUN24Server.csproj" />
+</Solution>
+

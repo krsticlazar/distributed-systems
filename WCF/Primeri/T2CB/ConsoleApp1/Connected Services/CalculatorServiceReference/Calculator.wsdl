@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://Microsoft.ServiceModel.Samples" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" targetNamespace="http://Microsoft.ServiceModel.Samples" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://Microsoft.ServiceModel.Samples/Imports">
+      <xsd:import schemaLocation="http://localhost:55882/Calculator.svc?xsd=xsd0" namespace="http://Microsoft.ServiceModel.Samples" />
+      <xsd:import schemaLocation="http://localhost:55882/Calculator.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICalculator_Clear_InputMessage">
+    <wsdl:part name="parameters" element="tns:Clear" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Clear_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClearResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_AddTo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTo" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_SubtractFrom_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubtractFrom" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_MultiplyBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:MultiplyBy" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_DivideBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:DivideBy" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Equals_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Equals" />
+  </wsdl:message>
+  <wsdl:message name="ICalculator_Equation_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Equation" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="ICalculator">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Clear">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculator/Clear" message="tns:ICalculator_Clear_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculator/ClearResponse" message="tns:ICalculator_Clear_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="AddTo">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculator/AddTo" message="tns:ICalculator_AddTo_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SubtractFrom">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculator/SubtractFrom" message="tns:ICalculator_SubtractFrom_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="MultiplyBy">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculator/MultiplyBy" message="tns:ICalculator_MultiplyBy_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DivideBy">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculator/DivideBy" message="tns:ICalculator_DivideBy_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Equals">
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculator/Equals" message="tns:ICalculator_Equals_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Equation">
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/ICalculator/Equation" message="tns:ICalculator_Equation_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
